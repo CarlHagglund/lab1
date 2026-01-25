@@ -1,26 +1,31 @@
+package my.lab.cars;
+
 import java.awt.*;
 
-public class Saab95{
+public class Car {
 
-    public boolean turboOn;
-    public int nrDoors; // Number of doors on the car
-    public double enginePower; // Engine power of the car
-    public double currentSpeed; // The current speed of the car
-    public Color color; // Color of the car
-    public String modelName; // The car model name
-    
-    public Saab95(){
-        nrDoors = 2;
-        color = Color.red;
-        enginePower = 125;
+    // Make class variables private, not to be changed by user
+
+    private boolean turboOn;
+    private int nrDoors; // Number of doors on the car
+    private double enginePower; // Engine power of the car
+    private double currentSpeed; // The current speed of the car
+    private Color color; // Color of the car
+    private String modelName; // The car model name
+
+    public Car(int nrDoors, Color color, double enginePower, String modelName ){
+        this.nrDoors = nrDoors;
+        this.color = color;
+        this.enginePower = enginePower;
 	    turboOn = false;
-        modelName = "Saab95";
-        stopEngine();
+        this.modelName = modelName;
+        stopEngine(); // set the moving speed to 0
     }
     
     public int getNrDoors(){
         return nrDoors;
     }
+
     public double getEnginePower(){
         return enginePower;
     }
