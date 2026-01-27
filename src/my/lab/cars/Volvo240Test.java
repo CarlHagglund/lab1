@@ -1,7 +1,8 @@
 package my.lab.cars;
+
+import org.junit.Assert;
 import org.junit.Test;
-import static org.junit.Assert.*;
-import org.junit.assert;
+
 
 public class Volvo240Test {
 
@@ -12,18 +13,46 @@ public class Volvo240Test {
         Volvo240 sut = new Volvo240();
 
         sut.startEngine();
+        Assert.assertTrue(0.1 == sut.getCurrentSpeed());
+    }
 
-        Assert.assertEquals();
+    @Test
+    public void testTurnLeft() {
 
+        Volvo240 sut = new Volvo240();
 
-        @Test
+        sut.startEngine();
+        sut.turnLeft();
+
+        Assert.assertTrue(sut.IsTurningLeft == true);
+        Assert.assertTrue(sut.IsTurningRight== false);
+
+    }
+
+    @Test
+    public void testTurnRight() {
+
+        Volvo240 sut = new Volvo240();
+
+        sut.startEngine();
+        sut.turnRight();
+
+        Assert.assertTrue(sut.IsTurningRight == true);
+        Assert.assertTrue(sut.IsTurningLeft == false);
+
+    }
+
+    @Test
     public void testMove() {
 
         Volvo240 sut = new Volvo240();
-        sut.move();
 
-        Assert.assertEquals();
+        sut.startEngine();
+        sut.turnRight();
 
+        Assert.assertTrue(sut.IsTurningRight == true);
+        Assert.assertTrue(sut.IsTurningLeft == false);
 
     }
+
 }
