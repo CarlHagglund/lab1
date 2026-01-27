@@ -4,10 +4,10 @@ import java.awt.*;
 
 public class Volvo240 extends Car implements Movable {
 
-    private boolean IsTurningLeft;
-    private boolean IsTurningRight;
-    private double CurrX;
-    private double CurrY;
+    public boolean IsTurningLeft;
+    public boolean IsTurningRight;
+    public double CurrX;
+    public double CurrY;
 
     public Volvo240() {
         super(4, Color.black, 100, "Volvo240");
