@@ -6,11 +6,12 @@ import org.junit.Test;
 
 public class Volvo240Test {
 
+    private Volvo240 sut = new Volvo240();
+
 
     @Test
     public void testStartEngine() {
 
-        Volvo240 sut = new Volvo240();
 
         sut.startEngine();
         Assert.assertTrue(0.1 == sut.getCurrentSpeed());
@@ -19,7 +20,6 @@ public class Volvo240Test {
     @Test
     public void testTurnLeft() {
 
-        Volvo240 sut = new Volvo240();
 
         sut.startEngine();
         sut.turnLeft();
@@ -33,14 +33,11 @@ public class Volvo240Test {
         Assert.assertTrue(0.0 == currY);
 
 
-
-
     }
 
     @Test
     public void testTurnRight() {
 
-        Volvo240 sut = new Volvo240();
 
         sut.startEngine();
         sut.turnRight();
@@ -58,7 +55,6 @@ public class Volvo240Test {
     @Test
     public void testMove() {
 
-        Volvo240 sut = new Volvo240();
         sut.startEngine();
         sut.turnLeft();
         double currxBeforeMove = sut.getCurrX();
@@ -68,14 +64,11 @@ public class Volvo240Test {
         Assert.assertTrue(currXafterMove == 0.1);
 
 
-
-
     }
 
     @Test
     public void testcurrX() {
 
-        Volvo240 sut = new Volvo240();
 
         sut.startEngine();
         sut.turnLeft();
@@ -89,7 +82,6 @@ public class Volvo240Test {
     @Test
     public void testcurrY() {
 
-        Volvo240 sut = new Volvo240();
 
         sut.startEngine();
         sut.turnRight();
@@ -99,3 +91,12 @@ public class Volvo240Test {
         Assert.assertTrue(0.1 == currY);
 
     }
+
+    @Test
+    public void testCurrSpeed() {
+
+
+    }
+
+
+}
