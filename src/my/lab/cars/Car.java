@@ -72,7 +72,6 @@ public class Car {
         currentSpeed = getCurrentSpeed() - speedFactor() * amount;
     }
     
-    // TODO fix this method according to lab pm
     public void gas(double amount) {
         if (amount < 0.0 || amount > 1.0)
             throw new IllegalArgumentException(
@@ -82,7 +81,6 @@ public class Car {
         incrementSpeed(amount);
     }
 
-    // TODO fix this method according to lab pm
     public void brake(double amount){
         if (amount < 0.0 || amount > 1.0)
             throw new IllegalArgumentException(

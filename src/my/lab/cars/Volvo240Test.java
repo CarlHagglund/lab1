@@ -95,7 +95,6 @@ public class Volvo240Test {
     @Test
     public void testGas() {
 
-        Volvo240 sut = new Volvo240();
         Volvo240 but = new Volvo240();
 
         double speedBefore = sut.getCurrentSpeed();
@@ -121,7 +120,6 @@ public class Volvo240Test {
     @Test
     public void testBrake() {
 
-        Volvo240 sut = new Volvo240();
 
         double speedBefore = sut.getCurrentSpeed();
 
@@ -129,6 +127,7 @@ public class Volvo240Test {
 
         double brake = sut.getCurrentSpeed();
 
+        Assert.assertFalse(speedBefore > brake);
 
 
 
