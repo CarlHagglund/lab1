@@ -1,6 +1,6 @@
 package my.lab.cars;
 
-import org.junitgit .Assert;
+import org.junit.Assert;
 import org.junit.Test;
 
 
@@ -23,9 +23,17 @@ public class Volvo240Test {
 
         sut.startEngine();
         sut.turnLeft();
+        sut.move();
 
-        Assert.assertTrue(sut.IsTurningLeft == true);
-        Assert.assertTrue(sut.IsTurningRight == false);
+        double currX = sut.getCurrX();
+        double currY = sut.getCurrY();
+
+        Assert.assertTrue(0.1 == currX);
+
+        Assert.assertTrue(0.0 == currY);
+
+
+
 
     }
 
@@ -36,9 +44,14 @@ public class Volvo240Test {
 
         sut.startEngine();
         sut.turnRight();
+        sut.move();
 
-        Assert.assertTrue(sut.IsTurningRight == true);
-        Assert.assertTrue(sut.IsTurningLeft == false);
+        double currX = sut.getCurrX();
+        double currY = sut.getCurrY();
+
+        Assert.assertTrue(0.0 == currX);
+
+        Assert.assertTrue(0.1 == currY);
 
     }
 
@@ -46,12 +59,16 @@ public class Volvo240Test {
     public void testMove() {
 
         Volvo240 sut = new Volvo240();
-
         sut.startEngine();
-        sut.turnRight();
+        sut.turnLeft();
+        double currxBeforeMove = sut.getCurrX();
+        sut.move();
+        double currXafterMove = sut.getCurrX();
+        Assert.assertTrue(currxBeforeMove == 0.0);
+        Assert.assertTrue(currXafterMove == 0.1);
 
-        Assert.assertTrue(sut.IsTurningRight == true);
-        Assert.assertTrue(sut.IsTurningLeft == false);
+
+
 
     }
 
@@ -63,7 +80,7 @@ public class Volvo240Test {
         sut.startEngine();
         sut.turnLeft();
         sut.move();
-        double currX = sut.CurrX;
+        double currX = sut.getCurrX();
 
         Assert.assertTrue(0.1 == currX);
 
@@ -77,10 +94,8 @@ public class Volvo240Test {
         sut.startEngine();
         sut.turnRight();
         sut.move();
-        double currY = sut.CurrY;
+        double currY = sut.getCurrY();
 
         Assert.assertTrue(0.1 == currY);
 
     }
-
-}
