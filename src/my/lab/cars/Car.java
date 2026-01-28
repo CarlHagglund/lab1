@@ -73,12 +73,22 @@ public class Car {
     }
     
     // TODO fix this method according to lab pm
-    public void gas(double amount){
+    public void gas(double amount) {
+        if (amount < 0.0 || amount > 1.0)
+            throw new IllegalArgumentException(
+                    "amount must be between 0.0 and 1.0. " + amount
+            );
+
         incrementSpeed(amount);
     }
 
     // TODO fix this method according to lab pm
     public void brake(double amount){
+        if (amount < 0.0 || amount > 1.0)
+            throw new IllegalArgumentException(
+                    "amount must be between 0.0 and 1.0. " + amount
+
+            );
         decrementSpeed(amount);
     }
 }
