@@ -6,6 +6,8 @@ import org.junit.Test;
 
 public class Volvo240Test {
 
+    private Volvo240 sut = new Volvo240();
+
 
     @Test
     public void testStartEngine() {
@@ -23,47 +25,57 @@ public class Volvo240Test {
 
         sut.startEngine();
         sut.turnLeft();
+        sut.move();
 
-        Assert.assertTrue(sut.IsTurningLeft);
-        Assert.assertFalse(sut.IsTurningRight);
+        double currX = sut.getCurrX();
+        double currY = sut.getCurrY();
+
+        Assert.assertTrue(0.1 == currX);
+
+        Assert.assertTrue(0.0 == currY);
+
 
     }
 
     @Test
     public void testTurnRight() {
 
-        Volvo240 sut = new Volvo240();
 
         sut.startEngine();
         sut.turnRight();
+        sut.move();
 
-        Assert.assertTrue(sut.IsTurningRight);
-        Assert.assertFalse(sut.IsTurningLeft);
+        double currX = sut.getCurrX();
+        double currY = sut.getCurrY();
+
+        Assert.assertTrue(0.0 == currX);
+
+        Assert.assertTrue(0.1 == currY);
 
     }
 
     @Test
     public void testMove() {
 
-        Volvo240 sut = new Volvo240();
-
         sut.startEngine();
-        sut.turnRight();
+        sut.turnLeft();
+        double currxBeforeMove = sut.getCurrX();
+        sut.move();
+        double currXafterMove = sut.getCurrX();
+        Assert.assertTrue(currxBeforeMove == 0.0);
+        Assert.assertTrue(currXafterMove == 0.1);
 
-        Assert.assertTrue(sut.IsTurningRight);
-        Assert.assertFalse(sut.IsTurningLeft);
 
     }
 
     @Test
     public void testCurrX() {
 
-        Volvo240 sut = new Volvo240();
 
         sut.startEngine();
         sut.turnLeft();
         sut.move();
-        double currX = sut.CurrX;
+        double currX = sut.getCurrX();
 
         Assert.assertEquals(0.1, currX, 0.0);
 
@@ -72,12 +84,11 @@ public class Volvo240Test {
     @Test
     public void testCurrY() {
 
-        Volvo240 sut = new Volvo240();
 
         sut.startEngine();
         sut.turnRight();
         sut.move();
-        double currY = sut.CurrY;
+        double currY = sut.getCurrY();
 
         Assert.assertEquals(0.1, currY, 0.0);
     }
@@ -99,6 +110,13 @@ public class Volvo240Test {
         Assert.assertEquals(speedBefore, gas1, 0.0);
         Assert.assertTrue(gas2 > speedBefore);
     }
+
+    @Test
+    public void testCurrSpeed() {
+
+
+    }
+
 
     @Test
     public void testBrake() {
