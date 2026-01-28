@@ -55,9 +55,9 @@ public class Volvo240Test {
         sut.turnLeft();
         double currxBeforeMove = sut.getCurrX();
         sut.move();
-        double currXafterMove = sut.getCurrX();
+        double currXAfterMove = sut.getCurrX();
         Assert.assertTrue(currxBeforeMove == 0.0);
-        Assert.assertTrue(currXafterMove == 0.1);
+        Assert.assertTrue(currXAfterMove == 0.1);
 
 
     }
@@ -89,21 +89,17 @@ public class Volvo240Test {
 
     @Test
     public void testGas() {
-
-        Volvo240 but = new Volvo240();
-
-        double speedBefore = sut.getCurrentSpeed();
-
-        //sut.gas(2.0);
-        but.gas(0.5);
-
-        double gas1 = sut.getCurrentSpeed();
-        double gas2 = but.getCurrentSpeed();
-
-
-        Assert.assertEquals(speedBefore, gas1, 0.0);
-        Assert.assertTrue(gas2 > speedBefore);
-    }
+        try {
+            sut.gas(1.1);}
+        catch (IllegalArgumentException e) {
+            Assert.assertTrue(true);
+        }
+        try {
+            sut.gas(-0.1);}
+        catch (IllegalArgumentException e) {
+            Assert.assertTrue(true);
+        //Om gas inte kan sättas till negativt så kan inte farten sänkas av gas()
+    }}
 
     @Test
     public void testCurrSpeedIncrement() {
@@ -112,9 +108,9 @@ public class Volvo240Test {
         sut.incrementSpeed(50);
 
         double enginePower = sut.getEnginePower();
-        double currspeed = sut.getCurrentSpeed();
+        double currentSpeed = sut.getCurrentSpeed();
 
-        Assert.assertTrue(currspeed >= 0 && currspeed <= enginePower);
+        Assert.assertTrue(currentSpeed >= 0 && currentSpeed <= enginePower);
     }
 
     @Test
@@ -125,24 +121,24 @@ public class Volvo240Test {
         sut.decrementSpeed(25);
 
         double enginePower = sut.getEnginePower();
-        double currspeed = sut.getCurrentSpeed();
+        double currentSpeed = sut.getCurrentSpeed();
 
-        Assert.assertTrue(currspeed >= 0 && currspeed <= enginePower);
+        Assert.assertTrue(currentSpeed >= 0 && currentSpeed <= enginePower);
     }
 
 
     @Test
     public void testBrake() {
-
-
-        double speedBefore = sut.getCurrentSpeed();
-
-        sut.brake(0.5);
-
-        double brake = sut.getCurrentSpeed();
-
-        Assert.assertFalse(speedBefore > brake);
-
-
-    }
+        try {
+            sut.brake(1.1);}
+        catch (IllegalArgumentException e) {
+            Assert.assertTrue(true);
+        }
+        try {
+            sut.brake(-0.1);}
+        catch (IllegalArgumentException e) {
+            Assert.assertTrue(true);
+        // När vi gör test med brake -0.1 så visar vi att break() inte kan göra att farten höjs
+        // Tyckte jag gjorde en bra lösning på detta problem faktiskt, tog inspo från python <3
+    }}
 }

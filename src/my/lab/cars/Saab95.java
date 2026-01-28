@@ -3,7 +3,7 @@ package my.lab.cars;
 import java.awt.*;
 
 public class Saab95 extends Car implements Movable {
-
+// Denna ser exakt ut som Volvo240 klassen :/
     private boolean IsTurningLeft;
     private boolean IsTurningRight;
     private double CurrX;

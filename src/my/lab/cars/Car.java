@@ -4,7 +4,7 @@ import java.awt.*;
 
 public class Car {
 
-    // Make class variables private, not to be changed by user
+    // Privata för att de inte ska kunna förändras eller kallas på direkt. Säkerhet
 
     private boolean turboOn;
     private int nrDoors; // Number of doors on the car
@@ -75,6 +75,7 @@ public class Car {
             throw new IllegalArgumentException("Speed " + currentSpeedtest + " is out of range!");
         }
 
+        // Denna kallas för att öka farten på bilen. Den skall raise:a error om kriteriet uppfylls.
 
     }
 
@@ -88,8 +89,7 @@ public class Car {
         } else {
             throw new IllegalArgumentException("Speed " + currentSpeedtest + " is out of range!");
         }
-
-
+        // Samma som increment cred till Calle
     }
 
     public void gas(double amount) {
@@ -99,14 +99,15 @@ public class Car {
             );
 
         incrementSpeed(amount);
-    }
+    } // lite samma visa här men om den inte raise:ar exception så kallas incrementSpeed()
 
     public void brake(double amount) {
-        if (amount < 0.0 || amount > 1.0)
+        if (amount < 0.0 || amount > 1.0 || amount > currentSpeed)
             throw new IllegalArgumentException(
-                    "amount must be between 0.0 and 1.0. " + amount
-
+                    "amount must be between 0.0 and 1.0. and can't be greater than current speed "
             );
+
         decrementSpeed(amount);
+        // Samma som innan men nu kallas decrementSpeed(), cred till mig, cool, Øhl osv <3
     }
 }
