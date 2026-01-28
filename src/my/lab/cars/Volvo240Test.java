@@ -8,11 +8,8 @@ public class Volvo240Test {
 
     private Volvo240 sut = new Volvo240();
 
-
     @Test
     public void testStartEngine() {
-
-        Volvo240 sut = new Volvo240();
 
         sut.startEngine();
         Assert.assertEquals(0.1, sut.getCurrentSpeed(), 0.0);
@@ -20,8 +17,6 @@ public class Volvo240Test {
 
     @Test
     public void testTurnLeft() {
-
-        Volvo240 sut = new Volvo240();
 
         sut.startEngine();
         sut.turnLeft();
@@ -39,7 +34,6 @@ public class Volvo240Test {
 
     @Test
     public void testTurnRight() {
-
 
         sut.startEngine();
         sut.turnRight();
@@ -92,6 +86,7 @@ public class Volvo240Test {
 
         Assert.assertEquals(0.1, currY, 0.0);
     }
+
     @Test
     public void testGas() {
 
@@ -111,9 +106,28 @@ public class Volvo240Test {
     }
 
     @Test
-    public void testCurrSpeed() {
+    public void testCurrSpeedIncrement() {
 
+        sut.startEngine();
+        sut.incrementSpeed(50);
 
+        double enginePower = sut.getEnginePower();
+        double currspeed = sut.getCurrentSpeed();
+
+        Assert.assertTrue(currspeed >= 0 && currspeed <= enginePower);
+    }
+
+    @Test
+    public void testCurrSpeedDecrement() {
+
+        sut.startEngine();
+        sut.incrementSpeed(50);
+        sut.decrementSpeed(25);
+
+        double enginePower = sut.getEnginePower();
+        double currspeed = sut.getCurrentSpeed();
+
+        Assert.assertTrue(currspeed >= 0 && currspeed <= enginePower);
     }
 
 
@@ -128,7 +142,6 @@ public class Volvo240Test {
         double brake = sut.getCurrentSpeed();
 
         Assert.assertFalse(speedBefore > brake);
-
 
 
     }
