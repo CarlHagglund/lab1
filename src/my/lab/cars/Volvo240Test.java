@@ -13,6 +13,10 @@ public class Volvo240Test {
 
         sut.startEngine();
         Assert.assertEquals(0.1, sut.getCurrentSpeed(), 0.0);
+        /*
+        kontrollerar att startengine() ändrar currenspeed till 0.1. Anledning till delta 0.0 (sista parametern)
+        är jag ej hitta en assertEqual som testar floats utan en delta.
+        */
     }
 
     @Test
@@ -28,6 +32,10 @@ public class Volvo240Test {
         Assert.assertTrue(0.1 == currX);
 
         Assert.assertTrue(0.0 == currY);
+        /*
+        testar att turnLeft() ändrar riktningen av bilen till x-axeln, kontrollerar detta genom att move()
+        ökar värdet på x-axeln och ej på y-axeln
+         */
 
 
     }
@@ -45,7 +53,9 @@ public class Volvo240Test {
         Assert.assertTrue(0.0 == currX);
 
         Assert.assertTrue(0.1 == currY);
-
+        /*
+        testar att turnRight() ändrar riktning samt värde på y-axel, ej x-axel.
+         */
     }
 
     @Test
@@ -58,7 +68,9 @@ public class Volvo240Test {
         double currXAfterMove = sut.getCurrX();
         Assert.assertTrue(currxBeforeMove == 0.0);
         Assert.assertTrue(currXAfterMove == 0.1);
-
+        /*
+        kontrollerar att move() ökar värdet på aktuell axel genom att kontrollerar innan och efter move() används.
+         */
 
     }
 
@@ -72,6 +84,10 @@ public class Volvo240Test {
         double currX = sut.getCurrX();
 
         Assert.assertEquals(0.1, currX, 0.0);
+        /*
+        extra test som riktar sig åt specifikt getCurrX(), kanske lite överflödigt eftersom att
+        de ovanstående testerna skulle misslyckas om denna ej funkar.
+         */
 
     }
 
@@ -85,6 +101,9 @@ public class Volvo240Test {
         double currY = sut.getCurrY();
 
         Assert.assertEquals(0.1, currY, 0.0);
+        /*
+        som ovan men getCurrY()
+         */
     }
 
     @Test
@@ -113,19 +132,21 @@ public class Volvo240Test {
         double currentSpeed = sut.getCurrentSpeed();
 
         Assert.assertTrue(currentSpeed >= 0 && currentSpeed <= enginePower);
+        // testar att currentspeed går att öka samt att värdet för currspeed hamnar inom gränsvärden
     }
 
     @Test
     public void testCurrSpeedDecrement() {
 
         sut.startEngine();
-        sut.incrementSpeed(50);
+        sut.incrementSpeed(80);
         sut.decrementSpeed(25);
 
         double enginePower = sut.getEnginePower();
         double currentSpeed = sut.getCurrentSpeed();
 
         Assert.assertTrue(currentSpeed >= 0 && currentSpeed <= enginePower);
+        // testar att värdet kan sänkas samt hamnar inom gränsvärden
     }
 
 
