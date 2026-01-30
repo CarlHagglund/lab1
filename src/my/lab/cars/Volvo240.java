@@ -23,7 +23,7 @@ public class Volvo240 extends Car implements Movable {
 
 
     @Override
-    // @Override gör så att denna metod används för subklassen och inte den från superklassen
+    // @Override används i detta fall för att override metoden från implementation
     public void move() {
         if (IsTurningLeft) {
             CurrX += super.getCurrentSpeed();
