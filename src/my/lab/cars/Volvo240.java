@@ -9,11 +9,6 @@ public class Volvo240 extends Car implements Movable {
     Car objekten är subtyper men kan fortfarande ses som "Car" objekt
     */
 
-    private boolean IsTurningLeft;
-    private boolean IsTurningRight;
-    private double CurrX;
-    private double CurrY;
-
     // attributer för riktning och koordinater
 
     public Volvo240() {
@@ -22,35 +17,16 @@ public class Volvo240 extends Car implements Movable {
     // Här visar vi vad som händer om vi kallar superklassen för att skapa en Volvo240 med dessa attributer.
 
 
-    @Override
-    // @Override används i detta fall för att override metoden från implementation
     public void move() {
-        if (IsTurningLeft) {
-            CurrX += super.getCurrentSpeed();
-        } else if (IsTurningRight) {
-            CurrY += super.getCurrentSpeed();
-        }
-
+        super.move();
     }
 
-    @Override
     public void turnLeft() {
-        IsTurningLeft = true;
-        IsTurningRight = false;
+        super.turnLeft();
     }
 
-    @Override
     public void turnRight() {
-        IsTurningRight = true;
-        IsTurningLeft = false;
-    }
-
-    public double getCurrX() {
-        return CurrX;
-    }
-// två getter funktioner bara :)
-    public double getCurrY() {
-        return CurrY;
+        super.turnRight();
     }
 
 }

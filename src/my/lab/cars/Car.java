@@ -2,7 +2,7 @@ package my.lab.cars;
 
 import java.awt.*;
 
-public class Car {
+public class Car implements Movable {
 
     // Privata för att de inte ska kunna förändras eller kallas på direkt. Säkerhet
 
@@ -12,6 +12,11 @@ public class Car {
     private double currentSpeed; // The current speed of the car
     private Color color; // Color of the car
     private String modelName; // The car model name
+
+    private boolean IsTurningLeft;
+    private boolean IsTurningRight;
+    private double CurrX;
+    private double CurrY;
 
     public Car(int nrDoors, Color color, double enginePower, String modelName) {
         this.nrDoors = nrDoors;
@@ -110,4 +115,35 @@ public class Car {
         else decrementSpeed(amount);
         // Samma som innan men nu kallas decrementSpeed(), cred till mig, cool, Øhl osv <3
     }
+
+    @Override
+    public void move() {
+        if (IsTurningLeft) {
+            CurrX += getCurrentSpeed();
+        } else if (IsTurningRight) {
+            CurrY += getCurrentSpeed();
+        }
+
+    }
+
+    @Override
+    public void turnLeft() {
+        IsTurningLeft = true;
+        IsTurningRight = false;
+    }
+
+    @Override
+    public void turnRight() {
+        IsTurningRight = true;
+        IsTurningLeft = false;
+
+    }
+    public double getCurrX() {
+        return CurrX;
+    }
+    // två getter funktioner bara :)
+    public double getCurrY() {
+        return CurrY;
+    }
+
 }
