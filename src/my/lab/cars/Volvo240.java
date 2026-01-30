@@ -9,12 +9,12 @@ public class Volvo240 extends Car implements Movable {
     Car objekten är subtyper men kan fortfarande ses som "Car" objekt
     */
 
-    public boolean IsTurningLeft;
-    public boolean IsTurningRight;
-    public double CurrX;
-    public double CurrY;
+    private boolean IsTurningLeft;
+    private boolean IsTurningRight;
+    private double CurrX;
+    private double CurrY;
 
-    // attributer för för riktning och koordinater
+    // attributer för riktning och koordinater
 
     public Volvo240() {
         super(4, Color.black, 100, "Volvo240");

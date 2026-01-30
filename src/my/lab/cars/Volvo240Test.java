@@ -93,6 +93,8 @@ public class Volvo240Test {
             sut.gas(1.1);}
         catch (IllegalArgumentException e) {
             Assert.assertTrue(true);
+            // Här testar vi om gas kan sättas till över 1.0
+
         }
         try {
             sut.gas(-0.1);}
@@ -133,6 +135,7 @@ public class Volvo240Test {
             sut.brake(1.1);}
         catch (IllegalArgumentException e) {
             Assert.assertTrue(true);
+            // Här testar vi om brake kan sättas till över 1.0
         }
         try {
             sut.brake(-0.1);}
