@@ -2,7 +2,7 @@ package my.lab.cars;
 
 import java.awt.*;
 
-public class Saab95 extends Car implements Movable {
+public class Saab95 extends Car {
 
     public Saab95() {
         super(2, Color.red, 125, "Saab95");

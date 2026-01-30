@@ -2,7 +2,7 @@ package my.lab.cars;
 
 import java.awt.*;
 
-public class Volvo240 extends Car implements Movable {
+public class Volvo240 extends Car {
 
     /* Här använder vi inhertance när vi "extends Car"
     // Nu kan vi skapa instance objekt så att Car car1 = new Volvo240
