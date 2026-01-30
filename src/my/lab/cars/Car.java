@@ -75,7 +75,7 @@ public class Car {
             throw new IllegalArgumentException("Speed " + currentSpeedtest + " is out of range!");
         }
 
-        // Denna kallas för att öka farten på bilen. Den skall raise:a error om kriteriet uppfylls.
+        // Denna kallas för att öka farten på bilen. Den skall raise:a error om kriteriet ej uppfylls.
 
     }
 
@@ -97,17 +97,17 @@ public class Car {
             throw new IllegalArgumentException(
                     "amount must be between 0.0 and 1.0. " + amount
             );
-
-        incrementSpeed(amount);
+        else incrementSpeed(amount);
     } // lite samma visa här men om den inte raise:ar exception så kallas incrementSpeed()
 
     public void brake(double amount) {
-        if (amount < 0.0 || amount > 1.0 || amount > currentSpeed)
+        if (amount < 0.0 || amount > 1.0)
             throw new IllegalArgumentException(
                     "amount must be between 0.0 and 1.0. and can't be greater than current speed "
             );
-
-        decrementSpeed(amount);
+        else if (amount > currentSpeed)
+            currentSpeed=0;
+        else decrementSpeed(amount);
         // Samma som innan men nu kallas decrementSpeed(), cred till mig, cool, Øhl osv <3
     }
 }

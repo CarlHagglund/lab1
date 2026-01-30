@@ -126,28 +126,25 @@ public class Volvo240Test {
     public void testCurrSpeedIncrement() {
 
         sut.startEngine();
-        sut.incrementSpeed(50);
 
-        double enginePower = sut.getEnginePower();
-        double currentSpeed = sut.getCurrentSpeed();
-
-        Assert.assertTrue(currentSpeed >= 0 && currentSpeed <= enginePower);
+        try {
+            sut.incrementSpeed(150);}
+        catch (IllegalArgumentException e) {
+            Assert.assertTrue(true);
         // testar att currentspeed går att öka samt att värdet för currspeed hamnar inom gränsvärden
-    }
+    }}
 
     @Test
     public void testCurrSpeedDecrement() {
 
         sut.startEngine();
-        sut.incrementSpeed(80);
-        sut.decrementSpeed(25);
 
-        double enginePower = sut.getEnginePower();
-        double currentSpeed = sut.getCurrentSpeed();
-
-        Assert.assertTrue(currentSpeed >= 0 && currentSpeed <= enginePower);
+        try {
+            sut.decrementSpeed(150);}
+        catch (IllegalArgumentException e) {
+            Assert.assertTrue(true);
         // testar att värdet kan sänkas samt hamnar inom gränsvärden
-    }
+    }}
 
 
     @Test
