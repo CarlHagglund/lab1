@@ -25,6 +25,7 @@ public class Car implements Movable {
         turboOn = false;
         this.modelName = modelName;
         stopEngine(); // set the moving speed to 0
+
     }
 
     public int getNrDoors() {

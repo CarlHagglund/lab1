@@ -119,8 +119,8 @@ public class Volvo240Test {
             sut.gas(-0.1);}
         catch (IllegalArgumentException e) {
             Assert.assertTrue(true);
-        //Om gas inte kan sättas till negativt så kan inte farten sänkas av gas()
-    }}
+            //Om gas inte kan sättas till negativt så kan inte farten sänkas av gas()
+        }}
 
     @Test
     public void testCurrSpeedIncrement() {
@@ -131,8 +131,8 @@ public class Volvo240Test {
             sut.incrementSpeed(150);}
         catch (IllegalArgumentException e) {
             Assert.assertTrue(true);
-        // testar att currentspeed går att öka samt att värdet för currspeed hamnar inom gränsvärden
-    }}
+            // testar att currentspeed går att öka samt att värdet för currspeed hamnar inom gränsvärden
+        }}
 
     @Test
     public void testCurrSpeedDecrement() {
@@ -143,8 +143,8 @@ public class Volvo240Test {
             sut.decrementSpeed(150);}
         catch (IllegalArgumentException e) {
             Assert.assertTrue(true);
-        // testar att värdet kan sänkas samt hamnar inom gränsvärden
-    }}
+            // testar att värdet kan sänkas samt hamnar inom gränsvärden
+        }}
 
 
     @Test
@@ -159,7 +159,7 @@ public class Volvo240Test {
             sut.brake(-0.1);}
         catch (IllegalArgumentException e) {
             Assert.assertTrue(true);
-        // När vi gör test med brake -0.1 så visar vi att break() inte kan göra att farten höjs
-        // Tyckte jag gjorde en bra lösning på detta problem faktiskt, tog inspo från python <3
-    }}
+            // När vi gör test med brake -0.1 så visar vi att break() inte kan göra att farten höjs
+            // Tyckte jag gjorde en bra lösning på detta problem faktiskt, tog inspo från python <3
+        }}
 }
