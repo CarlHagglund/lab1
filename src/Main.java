@@ -33,6 +33,8 @@ void main() {
 
     IO.println(String.format("x = %f", volvo240.getCurrX()));
 
+    //hallå
+
 
 
 
@@ -50,7 +52,6 @@ void main() {
 //
 //    saab95.move();
 //
-//    IO.println(String.format("y = %f", saab95.getCurrY()));
 
 
 
