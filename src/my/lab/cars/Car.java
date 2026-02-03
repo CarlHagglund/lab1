@@ -2,7 +2,7 @@ package my.lab.cars;
 
 import java.awt.*;
 
-public class Car implements Movable {
+public abstract class Car implements Movable {
 
     // Privata för att de inte ska kunna förändras eller kallas på direkt. Säkerhet
 

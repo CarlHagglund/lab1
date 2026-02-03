@@ -2,21 +2,22 @@ package my.lab.cars;
 
 import java.awt.*;
 
-public class Scania extends Car {
 
-    private double flatBeadAngle;
+public class Scania extends Car implements Flatbed {
+
+    private int CurrFlatbedAngle;
 
     public Scania() {
         super(2, Color.red, 770, "Scania");
-
+        this.CurrFlatbedAngle = 0;
     }
 
     @Override
     public void move() {
-        if (flatBeadAngle == 0) {
+        if (CurrFlatbedAngle == 0) {
             super.move();
         }
-        IO.println("Flatbed angle too high! lower flatbed to move");
+        else IO.println("Flatbed is not lowered! Flatbed angle must be 0");
     }
 
     public void turnLeft() {
@@ -27,34 +28,20 @@ public class Scania extends Car {
         super.turnRight();
     }
 
-    public void raiseFlatbed(double amount) {
+    @Override
+    public void ChangeFlatbedAngle(int amount) {
         if (super.getCurrentSpeed() != 0) {
-            throw new IllegalArgumentException("Cannot lower flatbed while moving!");
-        }
-        double currFlatBedAngle = flatBeadAngle + amount;
+            IO.println("Truck is moving, can't change flatbed angle");
+            }
+        else if (amount < 0 || amount > 70) {
+            throw new IllegalArgumentException(
+                    "Value must be between 0 and 70");
+            }
+        else CurrFlatbedAngle = amount;
 
-        if (0 <= currFlatBedAngle && currFlatBedAngle <= 70) {
-            flatBeadAngle = currFlatBedAngle;
-        } else {
-            throw new IllegalArgumentException(currFlatBedAngle + " is an invalid angle!");
-        }
-    }
-
-    public void lowerFlatbed(double amount) {
-        if (super.getCurrentSpeed() != 0) {
-            throw new IllegalArgumentException("Cannot lower flatbed while moving!");
-        }
-        double currFlatBedAngle = flatBeadAngle + (-amount);
-
-        if (0 <= currFlatBedAngle && currFlatBedAngle <= 70) {
-            flatBeadAngle = currFlatBedAngle;
-        } else {
-            throw new IllegalArgumentException(currFlatBedAngle + " is an invalid angle!");
-        }
-    }
-
-    public double getflatBedAngle() {
-        return flatBeadAngle;
+}
+    public double getCurrFlatbedAngle() {
+        return CurrFlatbedAngle;
     }
 
 }
