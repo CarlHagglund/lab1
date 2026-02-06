@@ -6,7 +6,6 @@ public abstract class Car implements Movable {
 
     // Privata för att de inte ska kunna förändras eller kallas på direkt. Säkerhet
 
-    private boolean turboOn;
     private int nrDoors; // Number of doors on the car
     private double enginePower; // Engine power of the car
     private double currentSpeed; // The current speed of the car
@@ -22,7 +21,6 @@ public abstract class Car implements Movable {
         this.nrDoors = nrDoors;
         this.color = color;
         this.enginePower = enginePower;
-        turboOn = false;
         this.modelName = modelName;
         stopEngine(); // set the moving speed to 0
 
@@ -56,18 +54,8 @@ public abstract class Car implements Movable {
         currentSpeed = 0;
     }
 
-    public void setTurboOn() {
-        turboOn = true;
-    }
-
-    public void setTurboOff() {
-        turboOn = false;
-    }
-
     public double speedFactor() {
-        double turbo = 1;
-        if (turboOn) turbo = 1.3;
-        return enginePower * 0.01 * turbo;
+        return enginePower * 0.01;
     }
 
     public void incrementSpeed(double amount) {
