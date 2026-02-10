@@ -20,7 +20,7 @@ public class CarTransport extends Car implements Flatbed {
 
    }
     @Override
-    public void ChangeFlatbedAngle(int amount) {
+    public void changeFlatbedAngle(int amount) {
        if (getCurrentSpeed() > 0 ) {
             throw new IllegalStateException("Veichle is moving, can't change flatbed angle");}
         else if (CurrFlatbedAngle+amount > 0 || amount > 1 || amount < 0 ){

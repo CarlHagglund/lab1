@@ -29,7 +29,7 @@ public class Scania extends Car implements Flatbed {
     }
 
     @Override
-    public void ChangeFlatbedAngle(int amount) {
+    public void changeFlatbedAngle(int amount) {
         if (super.getCurrentSpeed() != 0) {
             IO.println("Truck is moving, can't change flatbed angle");
             }

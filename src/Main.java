@@ -4,23 +4,30 @@ import my.lab.cars.Volvo240;
 
 void main() {
 
-    IO.println(String.format("Hello and welcome!"));
+//    IO.println(String.format("Hello and welcome!"));
+//
+//    Saab95 saab95 = new Saab95();
+//    Volvo240 volvo240 = new Volvo240();
+//    IO.println(String.format("saabfärg = %s", saab95.getColor()));
+//    IO.println(String.format("volvodörrar = %d", volvo240.getNrDoors()));
 
-    Saab95 saab95 = new Saab95();
-    Volvo240 volvo240 = new Volvo240();
-    IO.println(String.format("saabfärg = %s", saab95.getColor()));
-    IO.println(String.format("volvodörrar = %d", volvo240.getNrDoors()));
+    //saab95.startEngine();
 
-    saab95.startEngine();
+//    IO.println(String.format("x = %f", saab95.getCurrX()));
+//
+//    IO.println(String.format("currspeed = %f", saab95.getCurrentSpeed()));
 
-    IO.println(String.format("x = %f", saab95.getCurrX()));
+    //saab95.incrementSpeed(4);
 
-    IO.println(String.format("currspeed = %f", saab95.getCurrentSpeed()));
+    //IO.println(String.format("currspeed = %f", saab95.getCurrentSpeed()));
 
-    saab95.incrementSpeed(4);
+    Scania scania = new Scania();
 
-    IO.println(String.format("currspeed = %f", saab95.getCurrentSpeed()));
+    scania.startEngine();
+    scania.brake(0.9);
+    scania.changeFlatbedAngle(60);
+    scania.changeFlatbedAngle(20);
 
-
+    IO.println(String.format("currflatbedangle = %f", scania.getCurrFlatbedAngle()));
 }
 
