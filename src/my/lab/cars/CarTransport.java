@@ -1,33 +1,91 @@
 package my.lab.cars;
 
 import java.awt.*;
-import java.util.LinkedList;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
-public class CarTransport extends Car implements Flatbed {
+public class CarTransport extends Car implements Movable {
 
-    private int CurrFlatbedAngle;
-    private boolean Flatbed;
-    List<Objects> LoadedCars = new LinkedList<>();
-
-
-   public CarTransport() {
-       super(2,Color.red,1000,"Car Transport");
-       this.CurrFlatbedAngle = 0;
+    public boolean Ramp;
+    private static int MAX_LOAD = 10;
+    List<Car> LoadedCars = new ArrayList<>();
 
 
+    public CarTransport() {
+        super(2, Color.red, 1000, "Car Transport", 30000);
+        this.Ramp = false;
 
-   }
+    }
+
     @Override
-    public void ChangeFlatbedAngle(int amount) {
-       if (getCurrentSpeed() > 0 ) {
-            throw new IllegalStateException("Veichle is moving, can't change flatbed angle");}
-        else if (CurrFlatbedAngle+amount > 0 || amount > 1 || amount < 0 ){
-            Flatbed=false;
-            }
+    public void move() {
+        if (this.Ramp) {
+            IO.println("Ramp is down, can't move");
+        }
         else {
-            Flatbed=true;
+            super.move();
+            for (Car car : LoadedCars) {
+                car.setCurrX(this.getCurrX());
+                car.setCurrY(this.getCurrY());
+            }
         }
     }
+
+    @Override
+    public void turnLeft() {
+        if (this.Ramp)
+            IO.println("Ramp is down, can't move");
+        super.turnLeft();
+    }
+
+    @Override
+    public void turnRight() {
+        if (this.Ramp)
+            IO.println("Ramp is down, can't move");
+        super.turnRight();
+    }
+
+    public void getLoadedCars() {
+        IO.println(LoadedCars);
+    }
+
+    public void lowerRamp() {
+        if (getCurrentSpeed() == 0)
+            this.Ramp = true;
+        else IO.println("Can't lower ramp while moving");
+    }
+
+    public void raiseRamp() {
+        this.Ramp = false;
+    }
+
+    public void loadCar(Car car) {
+        if ((car.getWeight() > 3000)) {
+            IO.println("Car is to big");
+        } else if (Ramp && getCurrentSpeed() == 0 && LoadedCars.size() < MAX_LOAD &&
+                checkProximity(this, car)) {
+            LoadedCars.add(car);
+        }
+        else {
+            IO.println("Ramp is not down, can't load vehicles");
+        }
+    }
+
+    public void unloadCar(Car car) {
+        if (Ramp && LoadedCars.getLast().equals(car)) {
+            LoadedCars.remove(car);
+            car.setCurrX(this.getCurrX() + 3 );
+            car.setCurrY(this.getCurrY() + 3 );
+        }
+
+    }
+
+    public boolean checkProximity(CarTransport carTransport, Car car) {
+
+        double proximityX = carTransport.getCurrX() - car.getCurrX();
+        double proximityY = carTransport.getCurrY() - car.getCurrY();
+
+        return Math.abs(proximityX) <= 7 && Math.abs(proximityY) <= 7;
+    }
+
 }

@@ -11,20 +11,26 @@ public abstract class Car implements Movable {
     private double currentSpeed; // The current speed of the car
     private Color color; // Color of the car
     private String modelName; // The car model name
+    private int weight;
 
     private boolean IsTurningLeft;
     private boolean IsTurningRight;
     private double CurrX;
     private double CurrY;
 
-    public Car(int nrDoors, Color color, double enginePower, String modelName) {
+    public Car(int nrDoors, Color color, double enginePower, String modelName, int weight) {
         this.nrDoors = nrDoors;
         this.color = color;
         this.enginePower = enginePower;
         this.modelName = modelName;
+        this.weight = weight;
         stopEngine(); // set the moving speed to 0
 
     }
+
+    public void setCurrX(double amount) {CurrX = amount;}
+
+    public void setCurrY(double amount) {CurrY = amount;}
 
     public int getNrDoors() {
         return nrDoors;
@@ -42,6 +48,8 @@ public abstract class Car implements Movable {
         return color;
     }
 
+    public int getWeight() {return weight;}
+
     public void setColor(Color clr) {
         color = clr;
     }
@@ -52,6 +60,14 @@ public abstract class Car implements Movable {
 
     public void stopEngine() {
         currentSpeed = 0;
+    }
+
+    public double getCurrX() {
+        return CurrX;
+    }
+    // två getter funktioner bara :)
+    public double getCurrY() {
+        return CurrY;
     }
 
     public double speedFactor() {
@@ -127,12 +143,6 @@ public abstract class Car implements Movable {
         IsTurningLeft = false;
 
     }
-    public double getCurrX() {
-        return CurrX;
-    }
-    // två getter funktioner bara :)
-    public double getCurrY() {
-        return CurrY;
-    }
+
 
 }

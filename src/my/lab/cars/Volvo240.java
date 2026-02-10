@@ -12,7 +12,7 @@ public class Volvo240 extends Car {
     // attributer för riktning och koordinater
 
     public Volvo240() {
-        super(4, Color.black, 100, "Volvo240");
+        super(4, Color.black, 100, "Volvo240", 1300);
     }
     // Här visar vi vad som händer om vi kallar superklassen för att skapa en Volvo240 med dessa attributer.
 
