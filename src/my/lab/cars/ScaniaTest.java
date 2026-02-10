@@ -11,7 +11,7 @@ public class ScaniaTest {
     @Test
     public void FlatbedTest() {
 
-        testscania.ChangeFlatbedAngle(70);
+        testscania.changeFlatbedAngle(70);
         IO.println(testscania.getCurrFlatbedAngle());
 
         if (testscania.getCurrFlatbedAngle() == 70) {
