@@ -70,6 +70,7 @@ public abstract class Car implements Movable {
         return CurrY;
     }
 
+
     public double speedFactor() {
         return enginePower * 0.01;
     }
